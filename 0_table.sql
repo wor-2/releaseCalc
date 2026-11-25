@@ -1,5 +1,5 @@
 -- =====================================================================
--- deployment_tracker : optimized schema + migration (idempotent)
+-- deployment_tracker : final schema + migration (idempotent, run in the rl database)
 -- Run with:  psql -v ON_ERROR_STOP=1 -f deployment_tracker_optimized.sql
 -- =====================================================================
 BEGIN;
@@ -52,6 +52,15 @@ ALTER TABLE public.deployment_tracker
     ADD COLUMN IF NOT EXISTS slot_start TIMESTAMP WITHOUT TIME ZONE,
     ADD COLUMN IF NOT EXISTS slot_end   TIMESTAMP WITHOUT TIME ZONE,
     ADD COLUMN IF NOT EXISTS comments   TEXT;
+
+-- Columns the app reads/writes that the original table did not have.
+ALTER TABLE public.deployment_tracker
+    ADD COLUMN IF NOT EXISTS category          TEXT,
+    ADD COLUMN IF NOT EXISTS deployment_count  INTEGER NOT NULL DEFAULT 1,
+    ADD COLUMN IF NOT EXISTS business_unit     TEXT,
+    ADD COLUMN IF NOT EXISTS environment       TEXT,
+    ADD COLUMN IF NOT EXISTS git_links         JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS team_allocations  JSONB;
 
 -- ---------------------------------------------------------------------
 -- 2. CR numbers and RFIDs repeat across rows: drop any UNIQUE constraint
@@ -157,16 +166,6 @@ CREATE INDEX IF NOT EXISTS idx_application_name
     ON public.deployment_tracker (application_name);
 CREATE INDEX IF NOT EXISTS idx_deployment_status
     ON public.deployment_tracker (status);
-
--- Adds the deployment_tracker columns the app uses that 0_table.sql does not create.
--- Safe to run more than once.
-ALTER TABLE public.deployment_tracker
-    ADD COLUMN IF NOT EXISTS category          TEXT,
-    ADD COLUMN IF NOT EXISTS deployment_count  INTEGER NOT NULL DEFAULT 1,
-    ADD COLUMN IF NOT EXISTS business_unit     TEXT,
-    ADD COLUMN IF NOT EXISTS environment       TEXT,
-    ADD COLUMN IF NOT EXISTS git_links         JSONB NOT NULL DEFAULT '[]'::jsonb,
-    ADD COLUMN IF NOT EXISTS team_allocations  JSONB;
 
 COMMIT;
 
