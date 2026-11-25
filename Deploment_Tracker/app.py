@@ -34,11 +34,11 @@ app = Flask(
     static_folder =str(BASE_DIR / "static"),
     static_url_path = "/static"
 )
-# app.secret_key = os.getenv("FLASK_SECRET_KEY", "")
-# if not app.secret_key:
-#     raise RuntimeError(
-#         "FLASK_SECRET_KEY is missing. Add it to your .env file."
-#     )
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "")
+if not app.secret_key:
+    raise RuntimeError(
+        "FLASK_SECRET_KEY is missing. Add it to your .env file."
+    )
 
 
 # ============================================================
@@ -1504,16 +1504,22 @@ def validate_cr_number(cr_number):
         "Major": "Major CR",
     }.get(change_type, change_type)
 
-    # Deployment dates = every day of the planned window that is not in the past.
+    # Deployment dates = the CAB dates set in Change Management (future/today only).
+    # Older requests without CAB dates fall back to their planned start-end window.
+    today = date.today()
+    raw_dates = [d for d in (change.get("cab_dates") or []) if d]
     try:
-        start = parse_cab_date(str(change.get("planned_start") or "")[:10])
-        end = parse_cab_date(str(change.get("planned_end") or "")[:10])
+        if raw_dates:
+            cab_dates = sorted({parse_cab_date(d).isoformat() for d in raw_dates if parse_cab_date(d) >= today})
+        else:
+            start = parse_cab_date(str(change.get("planned_start") or "")[:10])
+            end = parse_cab_date(str(change.get("planned_end") or "")[:10])
+            first = max(start, today)
+            cab_dates = [(first + timedelta(days=n)).isoformat() for n in range((end - first).days + 1)]
     except ValueError:
-        raise ValueError(f"CR-{change_id} does not have a valid planned start/end date.")
-    first = max(start, date.today())
-    cab_dates = [(first + timedelta(days=n)).isoformat() for n in range((end - first).days + 1)]
+        raise ValueError(f"CR-{change_id} has an invalid CAB/planned date.")
     if not cab_dates:
-        raise ValueError(f"CR-{change_id} planned window has already ended ({end.isoformat()}).")
+        raise ValueError(f"CR-{change_id} has no upcoming CAB date in Change Management.")
 
     application = (change.get("application") or "").strip()
     return {
