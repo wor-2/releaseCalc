@@ -2392,6 +2392,35 @@ def update_deployment_rollback_timer(deployment_id):
                             (deployment_id, cr_number, started_at) VALUES (%s, %s, %s)
                     """, (deployment_id, cr_number, now))
                     message = "Rollback timer started. Start date and time recorded."
+
+                    # Starting the rollback timer also marks the deployment as rolled back,
+                    # so dashboards, counts and reports treat it as a rollback.
+                    cur.execute("""
+                        SELECT rfid, roll_back, status
+                        FROM public.deployment_tracker
+                        WHERE id = %s FOR UPDATE
+                    """, (deployment_id,))
+                    rfid_v, old_roll, old_status = cur.fetchone()
+                    new_status = old_status
+                    if (old_status or "").strip().lower() not in ("cancelled", "rejected"):
+                        new_status = "Rolled"
+                    if (old_roll or "").strip().lower() != "yes" or new_status != old_status:
+                        cur.execute("""
+                            UPDATE public.deployment_tracker
+                            SET roll_back = 'Yes', status = %s, updated_at = CURRENT_TIMESTAMP
+                            WHERE id = %s
+                        """, (new_status, deployment_id))
+                        cur.execute("SAVEPOINT rollback_history")
+                        try:
+                            insert_change_history(
+                                cur, deployment_id, cr_number, rfid_v,
+                                "System (rollback timer started)", "UPDATE",
+                                {"roll_back": {"old": old_roll, "new": "Yes"},
+                                 "status": {"old": old_status, "new": new_status}},
+                            )
+                        except Exception:
+                            cur.execute("ROLLBACK TO SAVEPOINT rollback_history")
+                            app.logger.warning("Could not write change history for rollback start: %s", deployment_id)
                 else:
                     if not is_running or not started_at:
                         return jsonify({"success": False, "message": "The rollback timer is not currently running."}), 409
