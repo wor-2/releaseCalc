@@ -99,6 +99,16 @@ button.red{background:#b91c1c}button.green{background:#047857}button.gray{backgr
     .top.topbar .header-title p { display: none; }
 }
 
+
+/* ---- logo sizing: make the logo fill the white brand box ---- */
+.top.topbar { height: 72px !important; min-height: 72px !important; }
+.top.topbar .brand { height: 72px !important; padding: 6px 28px 6px 24px !important; }
+.top.topbar .brand-logo { height: 58px !important; width: auto !important; max-width: 220px !important; max-height: none !important; }
+@media (max-width: 680px) {
+  .top.topbar { height: 56px !important; min-height: 56px !important; }
+  .top.topbar .brand { height: 56px !important; padding: 4px 16px 4px 12px !important; }
+  .top.topbar .brand-logo { height: 44px !important; max-width: 130px !important; }
+}
 </style>
 </head>
 <body>

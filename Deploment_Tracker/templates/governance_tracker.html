@@ -275,6 +275,10 @@ body.modal-lock{overflow:hidden}
 #addAuditUserWrap:not(.hidden),#newAuditPasscodePanel:not(.hidden){position:fixed;z-index:2400;top:50%;left:50%;transform:translate(-50%,-50%);width:min(440px,calc(100% - 28px))!important;margin:0!important;padding:22px!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:16px!important;box-shadow:0 0 0 100vmax rgba(15,23,42,.55),0 30px 80px rgba(15,23,42,.4);animation:popCenter .25s var(--ease) both!important}
 #newAuditPasscodePanel:not(.hidden){background:var(--warn-soft)!important}
 #addAuditUserWrap:not(.hidden)::before{content:"Register a new email";display:block;margin-bottom:12px;font-size:18px;font-weight:800}
+
+/* ---- logo sizing: make the logo fill the white brand box ---- */
+.governance-topbar .brand-logo { height: 62px !important; max-width: 220px !important; }
+@media (max-width: 680px) { .governance-topbar .brand-logo { height: 46px !important; max-width: 130px !important; } }
 </style>
 
 </head>

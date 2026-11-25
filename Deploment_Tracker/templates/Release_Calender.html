@@ -1433,6 +1433,17 @@ input[type=number] { appearance: textfield; -moz-appearance: textfield; }
 .calendar-day.heavy-day .day-caption{color:#fff!important;font-weight:700}
 .calendar-day.heavy-day .day-number{text-shadow:0 1px 2px rgba(0,0,0,.45)}
 .message.warning{color:#92400e;background:#fef3c7;border:1px solid #fcd34d}
+
+/* ---- logo sizing: make the logo fill the white brand box ---- */
+.topbar { height: 72px !important; min-height: 72px !important; }
+.brand { height: 72px !important; min-width: 0 !important; padding: 6px 28px 6px 24px !important; border-radius: 0 36px 36px 0 !important; }
+.brand .brand-logo { display: block; height: 58px !important; width: auto !important; max-width: 220px !important; max-height: none !important; object-fit: contain; }
+@media (max-width: 680px) {
+  .topbar { height: 56px !important; min-height: 56px !important; }
+  .brand { height: 56px !important; padding: 4px 16px 4px 12px !important; }
+  .brand .brand-logo { height: 44px !important; max-width: 130px !important; }
+  .header-title { margin-left: 140px !important; }
+}
 </style>
 
 
