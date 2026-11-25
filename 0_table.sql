@@ -158,6 +158,16 @@ CREATE INDEX IF NOT EXISTS idx_application_name
 CREATE INDEX IF NOT EXISTS idx_deployment_status
     ON public.deployment_tracker (status);
 
+-- Adds the deployment_tracker columns the app uses that 0_table.sql does not create.
+-- Safe to run more than once.
+ALTER TABLE public.deployment_tracker
+    ADD COLUMN IF NOT EXISTS category          TEXT,
+    ADD COLUMN IF NOT EXISTS deployment_count  INTEGER NOT NULL DEFAULT 1,
+    ADD COLUMN IF NOT EXISTS business_unit     TEXT,
+    ADD COLUMN IF NOT EXISTS environment       TEXT,
+    ADD COLUMN IF NOT EXISTS git_links         JSONB NOT NULL DEFAULT '[]'::jsonb,
+    ADD COLUMN IF NOT EXISTS team_allocations  JSONB;
+
 COMMIT;
 
 -- Refresh planner statistics after the migration.

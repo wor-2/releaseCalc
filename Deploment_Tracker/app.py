@@ -1501,7 +1501,7 @@ def validate_cr_number(cr_number):
         "Normal": "Normal CR",
         "Emergency": "Emergency CR",
         "Standard": "Standard CR",
-        "Major": "Major CR",
+        "Major": "Normal CR",   # rl only allows Normal/Emergency/Standard/Forward Fix/Bug Fix
     }.get(change_type, change_type)
 
     # Deployment dates = the CAB dates set in Change Management (future/today only).
