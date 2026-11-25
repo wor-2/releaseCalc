@@ -3,3 +3,6 @@
  * Running on http://127.0.0.1:5050
  * Running on http://10.120.148.248:5050
 2026-11-25 09:37:11,428 INFO werkzeug: [33mPress CTRL+C to quit[0m
+2026-11-25 09:37:14,848 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 09:37:14] "GET / HTTP/1.1" 200 -
+2026-11-25 09:37:15,078 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 09:37:15] "GET /static/images/rbl_logo.png HTTP/1.1" 200 -
+2026-11-25 09:37:27,352 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 09:37:27] "[31m[1mGET /api/validate-cr?cr_number=CR-1234 HTTP/1.1[0m" 400 -
