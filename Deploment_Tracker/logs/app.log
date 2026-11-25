@@ -536,3 +536,328 @@ Traceback (most recent call last):
 psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
 
 2026-11-25 12:31:00,111 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:31:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:32:00,075 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:32:00,075 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:32:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:33:00,073 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:33:00,073 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:33:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:34:00,094 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:34:00,096 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:34:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:35:00,078 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:35:00,093 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:35:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:36:00,072 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:36:00,072 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:36:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:37:00,084 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:37:00,084 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:37:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:38:00,085 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:38:00,085 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:38:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:39:00,088 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:39:00,088 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:39:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:40:00,088 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:40:00,088 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:40:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:41:00,075 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:41:00,075 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:41:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:42:00,087 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:42:00,087 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:42:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:43:00,088 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:43:00,088 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:43:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:44:00,083 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:44:00,083 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:44:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:45:00,083 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:45:00,083 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:45:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:46:00,088 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:46:00,088 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:46:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:47:00,080 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:47:00,080 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:47:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:48:00,080 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:48:00,080 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:48:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:49:00,085 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:49:00,085 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:49:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:50:00,120 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:50:00,120 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:50:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:51:00,080 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:51:00,095 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:51:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:52:00,595 ERROR app: Could not load running status
+Traceback (most recent call last):
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 2070, in running_status
+    conn = get_connection()
+           ^^^^^^^^^^^^^^^^
+  File "F:\frame\rl\Deploment_Tracker\app.py", line 920, in get_connection
+    return psycopg2.connect(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+2026-11-25 12:52:00,685 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:52:00] "[35m[1mGET /api/running-status?only_running=true HTTP/1.1[0m" 500 -
+2026-11-25 12:52:28,626 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:52:28] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:52:57,245 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:52:57] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:53:58,291 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:53:58] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:54:59,545 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:54:59] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:56:00,286 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:56:00] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:57:01,319 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:57:35,160 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:35] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:57:37,305 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:37] "GET /api/running-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:37,352 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:37] "GET /api/running-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:37,352 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:37] "GET /api/running-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:39,889 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:39] "GET /api/rollback-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:41,551 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:41] "GET /api/running-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:41,973 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:41] "GET /api/running-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:43,582 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:43] "GET /api/rollback-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:46,120 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:46] "GET /api/running-daily?date=2026-11-27 HTTP/1.1" 200 -
+2026-11-25 12:57:57,178 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:57:57] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:58:27,873 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:58:27] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 12:59:07,748 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 12:59:07] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:00:01,291 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:00:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:01:01,398 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:01:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:02:01,460 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:02:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:03:01,658 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:03:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:04:01,415 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:04:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:05:01,269 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:05:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:06:01,729 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:06:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:07:01,516 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:07:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:08:01,191 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:08:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:09:01,707 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:09:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:10:01,288 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:10:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:11:01,902 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:11:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
+2026-11-25 13:12:01,354 INFO werkzeug: 127.0.0.1 - - [25/Nov/2026 13:12:01] "GET /api/running-status?only_running=true HTTP/1.1" 200 -
