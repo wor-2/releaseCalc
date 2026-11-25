@@ -957,7 +957,7 @@ def validate_git_link(url):
             "github.com",
             "gitlab.com",
             "bitbucket.org",
-            "apnagit.rblbank.com",
+            
         }
         return (
             parsed.scheme.lower() == "https"
@@ -1451,212 +1451,89 @@ def get_existing_rfid(cur, cr_number):
     )
     row = cur.fetchone()
     return row[0] if row else None
+CHANGE_API_URL = os.getenv("CHANGE_API_URL", "https://change-zeta-seven.vercel.app").strip().rstrip("/")
+CHANGE_API_KEY = os.getenv("CHANGE_API_KEY", "").strip()
+CHANGE_API_TIMEOUT = int(os.getenv("CHANGE_API_TIMEOUT", "30"))
+
+
 def validate_cr_number(cr_number):
+    """Validate a CR against the Change Management app (replaces the RBL ITSM lookup).
 
-    change_id = re.sub(
-        r"^CR-",
-        "",
-        str(cr_number).strip(),
-        flags=re.IGNORECASE
-    )
+    The CR number is the digits after "CR-" (the Change Management request id).
+    Returns the same dict shape the rest of the tracker already uses.
+    """
+    change_id = re.sub(r"^CR-", "", str(cr_number).strip(), flags=re.IGNORECASE).strip()
+    if not change_id.isdigit():
+        raise ValueError("CR Number must contain digits after CR-")
 
-    url = f"https://itsupportuat.rblbank.com/api/v3/changes/{change_id}"
-
-
-    headers = {
-        "TECHNICIAN_KEY": "1A112622-14BF-4A6C-A897-8888870B2526",
-        "Accept": "application/json"
-    }
+    if not CHANGE_API_KEY:
+        raise ValueError("Change Management integration is not configured (CHANGE_API_KEY).")
 
     try:
         response = requests.get(
-            url,
-            headers=headers,
-            timeout=30
+            f"{CHANGE_API_URL}/api/changes/{change_id}",
+            headers={"X-API-Key": CHANGE_API_KEY, "Accept": "application/json"},
+            timeout=CHANGE_API_TIMEOUT,
         )
-
-
-        response.raise_for_status()
-
-        data = response.json()
-
-        if data.get("response_status", {}).get("status") != "success":
-            raise ValueError(
-                f"CR-{change_id} not found."
-            )
-
-        change = data.get("change", {})
-
-        change_requestor = (
-            change.get("change_requester", {})
-            .get("email_id", "")
-        )
-
-        change_type = (
-            change.get("change_type", {})
-            .get("name", "")
-        )
-
-        change_type_mapping = {
-            "Normal Change": "Normal CR",
-            "Emergency Change": "Emergency CR",
-            "Standard Change": "Standard CR"
-        }
-
-        change_type = change_type_mapping.get(
-            change_type,
-            change_type
-        )
-
-        application_name = (
-            change.get("subcategory", {})
-            .get("name", "")
-        )
-
-        udf = change.get("udf_fields") or {}
-
-        udf = change.get("udf_fields") or {}
-
-        business_unit = str(
-            udf.get("udf_sline_39302") or ""
-        ).strip()
-
-        category =(
-            (change.get("category") or {})
-            .get("name","")
-            .strip()
-        )
-
-        impacted_application = str(
-            udf.get("udf_sline_35767") or ""
-        ).strip()
-        
-        environment = str(
-            udf.get("udf_sline_10801") or ""
-        ).strip()
-
-        cr_status = (
-            (change.get("status") or {})
-            .get("name", "")
-            .strip()
-        )
-
-        approval_status = (
-            (change.get("approval_status") or {})
-            .get("name", "")
-            .strip()
-            )
-
-        stage_name = (
-            (change.get("stage") or {})
-            .get("name", "")
-            .strip()
-        )
-
-        if cr_status in ["Rejected","Completed", "Closed", "Cancelled"]:
-            raise ValueError(
-                f"CR-{change_id} cannot be used. Current status: {cr_status}"
-            )
-
-        if "review" in stage_name.lower():
-            raise ValueError(
-                f"CR-{change_id} is in Review stage and cannot be used."
-            )
-
-        if approval_status != "Approved":
-            raise ValueError(
-                f"CR-{change_id} is not approved. Current status: {approval_status}"
-            )
-                   
-        udf = change.get("udf_fields") or {}
-
-        cab_dates = []
-
-        for field in (
-           
-            # "udf_date_33001",
-            "udf_date_35717",
-            "udf_date_35719",
-            "udf_date_35720",
-            "udf_date_35721",
-            "udf_date_35722",
-            "udf_date_35723",
-            "udf_date_35724",
-            "udf_date_35725",
-            "udf_date_35726",
-            "udf_date_35727",
-
-            
-        ):
-            value = (udf.get(field) or {}).get("display_value")
-            if value:
-                cab_dates.append(value)
-        
-        cab_dates = list(dict.fromkeys(cab_dates))
-        date_mode = "cab"
-        range_start = range_end = None
-
-        if is_range_category(category):
-            raw_start = _itsm_date_value(change, udf, IMPL_START_KEYS)
-            raw_end = _itsm_date_value(change, udf, IMPL_END_KEYS)
-            if not raw_start or not raw_end:
-                raise ValueError(
-                    f"CR-{change_id} ({category}) does not have an implementation start/end date in ITSM."
-                )
-            impl_start = parse_cab_date(raw_start)
-            impl_end = parse_cab_date(raw_end)
-            if impl_end < impl_start:
-                raise ValueError(
-                    f"CR-{change_id} has an implementation end date before its start date."
-                )
-
-            today = date.today()
-            if impl_end < today:
-                raise ValueError(
-                    f"CR-{change_id} implementation window has already ended ({impl_end.isoformat()})."
-                )
-
-            effective_start = max(impl_start, today)  # past days cannot be booked
-            cab_dates = [
-                (effective_start + timedelta(days=n)).isoformat()
-                for n in range((impl_end - effective_start).days + 1)
-            ]
-            date_mode = "range"
-            range_start, range_end = impl_start.isoformat(), impl_end.isoformat()
-
-        if not cab_dates:
-            raise ValueError(
-                f"CR-{change_id} does not have any deployment dates configured in ITSM."
-            )
-        
-        return {
-            "change_id": str(change.get("id")),
-            "approval_status": approval_status,
-            "cr_status": cr_status,
-            "change_type": change_type,
-            "change_requestor": change_requestor,
-            "application_name": application_name,
-            "business_unit": business_unit,
-            "environment": environment,
-            "category": category,                          # NEW
-            "impacted_application": impacted_application,  # NEW
-            "cab_dates": cab_dates,
-            "date_mode": date_mode,
-            "range_start": range_start,
-            "range_end": range_end
-        }
-
-
-    except requests.HTTPError as exc:
-        if exc.response is not None and exc.response.status_code == 404:
+        if response.status_code == 404:
             raise ValueError(f"CR-{change_id} not found.")
-
+        if response.status_code in (401, 403):
+            raise ValueError("Change Management rejected the API key.")
+        response.raise_for_status()
+        change = response.json()
+    except requests.RequestException:
+        raise ValueError("Unable to connect to Change Management service.")
+    except ValueError as exc:
+        if str(exc).startswith(("CR-", "Change Management")):
+            raise
         raise ValueError(f"Unable to validate CR-{change_id}.")
 
-    except requests.RequestException:
-        raise ValueError(
-            "Unable to connect to ITSM service."
-        )
+    status = (change.get("status") or "").strip().upper()
+    status_label = (change.get("status_label") or status).strip()
+
+    if status in ("REJECTED", "COMPLETED"):
+        raise ValueError(f"CR-{change_id} cannot be used. Current status: {status_label}")
+    if status != "APPROVED":
+        raise ValueError(f"CR-{change_id} is not approved. Current status: {status_label}")
+
+    change_type = (change.get("change_type") or "").strip()
+    change_type = {
+        "Normal": "Normal CR",
+        "Emergency": "Emergency CR",
+        "Standard": "Standard CR",
+        "Major": "Major CR",
+    }.get(change_type, change_type)
+
+    # Deployment dates = every day of the planned window that is not in the past.
+    try:
+        start = parse_cab_date(str(change.get("planned_start") or "")[:10])
+        end = parse_cab_date(str(change.get("planned_end") or "")[:10])
+    except ValueError:
+        raise ValueError(f"CR-{change_id} does not have a valid planned start/end date.")
+    first = max(start, date.today())
+    cab_dates = [(first + timedelta(days=n)).isoformat() for n in range((end - first).days + 1)]
+    if not cab_dates:
+        raise ValueError(f"CR-{change_id} planned window has already ended ({end.isoformat()}).")
+
+    application = (change.get("application") or "").strip()
+    return {
+        "change_id": str(change.get("id")),
+        "approval_status": "Approved",
+        "cr_status": status_label,
+        "change_type": change_type,
+        "change_requestor": (change.get("requester_email") or "").strip(),
+        "application_name": application,
+        "business_unit": (change.get("assigned_team") or "").strip(),
+        "environment": (change.get("environment") or "").strip(),
+        "category": "",
+        "impacted_application": application,
+        "cab_dates": cab_dates,
+        "date_mode": "cab",
+        "range_start": None,
+        "range_end": None,
+    }
+
+
 MAX_BOOKINGS_PER_SUBMIT = 50
 
 
